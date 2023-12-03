@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Railway
-        run: npm -i -g @railway/cli
+        run: npm i -g @railway/cli
 
       - name: Deploy to Railway
         run: railway up --service d6b9aed2-9c99-4680-8ffd-4fa6377316b4
