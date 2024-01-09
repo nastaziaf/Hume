@@ -66,17 +66,17 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('name'))
+      if (Object.prototype.hasOwnProperty.call(data, 'name'))
         obj.name = ApiClient.convertToType(data['name'], 'String');
-      if (data.hasOwnProperty('deviceType'))
+      if (Object.prototype.hasOwnProperty.call(data, 'deviceType'))
         obj.deviceType = ApiClient.convertToType(data['deviceType'], 'String');
-      if (data.hasOwnProperty('brand'))
+      if (Object.prototype.hasOwnProperty.call(data, 'brand'))
         obj.brand = ApiClient.convertToType(data['brand'], 'String');
-      if (data.hasOwnProperty('zone'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone'))
         obj.zone = ApiClient.convertToType(data['zone'], 'String');
-      if (data.hasOwnProperty('status'))
+      if (Object.prototype.hasOwnProperty.call(data, 'status'))
         obj.status = ApiClient.convertToType(data['status'], 'String');
-      if (data.hasOwnProperty('id'))
+      if (Object.prototype.hasOwnProperty.call(data, 'id'))
         obj.id = ApiClient.convertToType(data['id'], 'Number');
     }
     return obj;

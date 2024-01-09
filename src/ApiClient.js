@@ -563,7 +563,7 @@ var type_object = 'object';
           }
           var result = {};
           for (var k in data) {
-            if (data.hasOwnProperty(k)) {
+            if (Object.prototype.hasOwnProperty.call(data, k)) {
               var key = exports.convertToType(k, keyType);
               var value = exports.convertToType(data[k], valueType);
               result[key] = value;
@@ -585,12 +585,12 @@ var type_object = 'object';
   exports.constructFromObject = function(data, obj, itemType) {
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
-        if (data.hasOwnProperty(i))
+        if (Object.prototype.hasOwnProperty.call(data, i))
           obj[i] = exports.convertToType(data[i], itemType);
       }
     } else {
       for (var k in data) {
-        if (data.hasOwnProperty(k))
+        if (Object.prototype.hasOwnProperty.call(data, k))
           obj[k] = exports.convertToType(data[k], itemType);
       }
     }
