@@ -1,3 +1,10 @@
+/**
+ * This function creates an 'assertEquals' utility for comparing expected and actual values,
+ * and throwing an error if they are not equal.
+ *
+ * @param {Object} root - The global object (e.g., 'window' in a browser or 'global' in Node.js).
+ * @param {Function} factory - A function that returns the 'assertEquals' utility.
+ */
 (function(root, factory) {
   // Check if define is a function and define.amd is available (AMD module loader)
   if (typeof define === 'function' && define.amd) {
@@ -13,6 +20,13 @@
 }(this, function() {
   'use strict';
 
+   /**
+   * Asserts that two values are equal and throws an error if they are not.
+   *
+   * @param {*} expected - The expected value.
+   * @param {*} actual - The actual value.
+   * @param {String} ptr - Pointer to track the nested properties during recursion.
+   */
   var assertEquals = function(expected, actual, ptr) {
     // If ptr is not provided, initialize it as an empty string
     if (!ptr)
@@ -42,6 +56,12 @@
     return checkObject(expected, actual, ptr);
   }
 
+   /**
+   * Converts a Date object to an ISO date string, stripping out milliseconds.
+   *
+   * @param {Date} value - The Date object to be converted.
+   * @returns {String} - The ISO date string.
+   */
   function toISODateString(value) {
     // Convert Date object to ISO date string, stripping out milliseconds
     if (value instanceof Date) {
@@ -50,6 +70,13 @@
     return value;
   }
 
+   /**
+   * Recursively checks the properties of two objects for equality.
+   *
+   * @param {Object} expected - The expected object.
+   * @param {Object} actual - The actual object.
+   * @param {String} ptr - Pointer to track the nested properties during recursion.
+   */
   function checkObject(expected, actual, ptr) {
     // Check for missing values
     if (undefOrNull(expected) || undefOrNull(actual))
@@ -88,11 +115,25 @@
     }
   }
 
+   /**
+   * Checks if a value is undefined or null.
+   *
+   * @param {*} v - The value to check.
+   * @returns {Boolean} - True if the value is undefined or null, false otherwise.
+   */
   function undefOrNull(v) {
     // Check if a value is undefined or null
     return v === undefined || v === null;
   }
 
+  /**
+   * Logs an error message and throws an error.
+   *
+   * @param {*} expected - The expected value.
+   * @param {*} actual - The actual value.
+   * @param {String} ptr - Pointer to track the nested properties during recursion.
+   * @param {String} msg - The error message.
+   */
   function fail(expected, actual, ptr, msg) {
     // Log an error message and throw an error
     var text = ptr + ' ' + msg + " expected: " + expected + ", actual: " + actual;

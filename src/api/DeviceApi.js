@@ -14,6 +14,7 @@
  */
 
 (function(root, factory) {
+  // Check if AMD (Asynchronous Module Definition) is supported
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['ApiClient', 'model/AddDeviceRequest', 'model/InvalidDeviceId', 'model/InvalidInput', 'model/SuccessfulDeviceGet', 'model/SuccessfulDeviceUpdate', 'model/UpdateDeviceRequest'], factory);
@@ -25,6 +26,7 @@
     if (!root.Hume) {
       root.Hume = {};
     }
+    // Create and expose the DeviceApi for browser globals
     root.Hume.DeviceApi = factory(root.Hume.ApiClient, root.Hume.AddDeviceRequest, root.Hume.InvalidDeviceId, root.Hume.InvalidInput, root.Hume.SuccessfulDeviceGet, root.Hume.SuccessfulDeviceUpdate, root.Hume.UpdateDeviceRequest);
   }
 }(this, function(ApiClient, SuccessfulDeviceGet, SuccessfulDeviceUpdate) {
@@ -75,24 +77,34 @@
         throw new Error("Missing the required parameter 'body' when calling addDevice");
       }
 
-
+      // Define path parameters for the API POST endpoint
       var pathParams = {
         'username': username
       };
+
+      // Define query parameters for the API POST endpoint
       var queryParams = {
       };
+
+      // Define collection qeury parameters for the API POST endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API POST endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API POST endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API POST endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
 
+      // Call `callApi` method to make the actual POST request to add a new device
       return this.apiClient.callApi(
         '/user/{username}/device', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
@@ -128,25 +140,35 @@
         throw new Error("Missing the required parameter 'deviceId' when calling deleteDevice");
       }
 
-
+      // Define path parameters for the API DELETE endpoint
       var pathParams = {
         'username': username,
         'device_id': deviceId
       };
+
+      // Define query parameters for the API DELETE endpoint
       var queryParams = {
       };
+
+      // Define collection query parameters for the API DELETE endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API DELETE endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API DELETE endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API DELETE endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
 
+      // Call `callApi` method to make the actual POST request to delete an existed device
       return this.apiClient.callApi(
         '/user/{username}/device/{device_id}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
@@ -183,25 +205,35 @@
         throw new Error("Missing the required parameter 'deviceId' when calling getDevice");
       }
 
-
+      // Define path parameters for the API GET endpoint
       var pathParams = {
         'username': username,
         'device_id': deviceId
       };
+
+      // Define qeury parameters for the API GET endpoint
       var queryParams = {
       };
+
+      // Define collection query parameters for the API GET endpoint
       var collectionQueryParams = {
       };
+
+      // Define headers parameters for the API GET endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API GET endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API GET endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = SuccessfulDeviceGet;
 
+      // Call `callApi` method to make the actual GET request for a device's informations 
       return this.apiClient.callApi(
         '/user/{username}/device/{device_id}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
@@ -232,24 +264,34 @@
         throw new Error("Missing the required parameter 'username' when calling getDevices");
       }
 
-
+      // Define path parameters for the API GET endpoint
       var pathParams = {
         'username': username
       };
+
+      // Define query parameters for the API GET endpoint
       var queryParams = {
       };
+
+      // Define collection query parameters for the API GET endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API GET endpoint
       var headerParams = {
       };
+
+      // Define form  parameters for the API GET endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API GET endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = [[DeviceResponse]];
 
+      // Call `callApi` method to make the actual GET request for a list with all devices
       return this.apiClient.callApi(
         '/user/{username}/device', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
@@ -295,26 +337,36 @@
         throw new Error("Missing the required parameter 'deviceName' when calling updateDevice");
       }
 
-
+      // Define path parameters for the API PUT endpoint
       var pathParams = {
         'username': username,
         'device_name': deviceName
       };
+
+      // Define query parameters for the API PUT endpoint
       var queryParams = {
         'device_status': deviceStatus,
       };
+
+      // Define collection query parameters for the API PUT endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API PUT endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API PUT endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API PUT endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = SuccessfulDeviceUpdate;
 
+      // Call `callApi` method to make the actual PUT request to change a device's status
       return this.apiClient.callApi(
         '/user/{username}/device/{device_name}/deviceStatus', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,

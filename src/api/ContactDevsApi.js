@@ -87,27 +87,37 @@
         throw new Error("Missing the required parameter 'username' when calling contactDevs");
       }
 
-
+      // Define path parameters for the API POST endpoint
       var pathParams = {
         'username': username
       };
+
+      // Define query parameters for the API POST endpoint
       var queryParams = {
         'fullname': fullname,
         'email': email,
         'text_message': textMessage,
       };
+
+      // Define collection query parameters for the API POST endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API POST endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API POST endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API POST endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
 
+      // Call `callApi` method to make the actual POST request to contact developers
       return this.apiClient.callApi(
         '/user/{username}/contact', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
