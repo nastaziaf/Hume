@@ -27,7 +27,7 @@
     }
     root.Hume.AlarmApi = factory(root.Hume.ApiClient, root.Hume.AlarmResponse, root.Hume.InvalidInput);
   }
-}(this, function(ApiClient, AlarmResponse, InvalidInput) {
+}(this, function(ApiClient, AlarmResponse) {
   'use strict';
 
   /**

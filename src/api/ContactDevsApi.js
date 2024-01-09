@@ -27,7 +27,7 @@
     }
     root.Hume.ContactDevsApi = factory(root.Hume.ApiClient, root.Hume.InvalidContact);
   }
-}(this, function(ApiClient, InvalidContact) {
+}(this, function(ApiClient) {
   'use strict';
 
   /**

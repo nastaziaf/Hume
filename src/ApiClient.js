@@ -183,7 +183,10 @@ var type_object = 'object';
       var fs;
       try {
         fs = require('fs');
-      } catch (err) {}
+      } catch (err) {
+        // Handle the error
+        console.error('Error loading fs module:', err);
+      }
       if (fs && fs.ReadStream && param instanceof fs.ReadStream) {
         return true;
       }
@@ -534,7 +537,7 @@ var type_object = 'object';
       case 'Date':
         return this.parseDate(String(data));
       case 'Blob':
-      	return data;
+        return data;
       default:
         if (type === Object) {
           // generic object, return directly

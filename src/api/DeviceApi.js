@@ -29,7 +29,7 @@
     // Create and expose the DeviceApi for browser globals
     root.Hume.DeviceApi = factory(root.Hume.ApiClient, root.Hume.AddDeviceRequest, root.Hume.InvalidDeviceId, root.Hume.InvalidInput, root.Hume.SuccessfulDeviceGet, root.Hume.SuccessfulDeviceUpdate, root.Hume.UpdateDeviceRequest);
   }
-}(this, function(ApiClient, AddDeviceRequest, InvalidDeviceId, InvalidInput, SuccessfulDeviceGet, SuccessfulDeviceUpdate, UpdateDeviceRequest) {
+}(this, function(ApiClient, SuccessfulDeviceGet, SuccessfulDeviceUpdate) {
   'use strict';
 
   /**
