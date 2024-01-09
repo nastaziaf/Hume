@@ -76,25 +76,35 @@
         throw new Error("Missing the required parameter 'zoneId' when calling getAlarmStatus");
       }
 
-
+      // Define path parameters for the API GET endpoint
       var pathParams = {
         'username': username,
         'zone_id': zoneId
       };
+
+      // Define query parameters for the API GET endpoint
       var queryParams = {
       };
+
+      // Define collection query parameters for the API GET endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API GET endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API GET endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API GET endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = AlarmResponse;
 
+      // Call `callApi` method to make the actual GET request for alarm status in zone
       return this.apiClient.callApi(
         '/user/{username}/zone/{zone_id}/alarm_status', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
@@ -136,26 +146,36 @@
         throw new Error("Missing the required parameter 'zoneId' when calling modifyAlarmStatus");
       }
 
-
+      // Define path parameters for the API PUT endpoint
       var pathParams = {
         'username': username,
         'zone_id': zoneId
       };
+
+      // Define query parameters for the API PUT endpoint
       var queryParams = {
         'alarm_status': alarmStatus,
       };
+
+      // Define collection query parameters for the API PUT endpoint
       var collectionQueryParams = {
       };
+
+      // Define header parameters for the API PUT endpoint
       var headerParams = {
       };
+
+      // Define form parameters for the API PUT endpoint
       var formParams = {
       };
 
+      // Define authentication names, content types, accepts, and return type for the API PUT endpoint
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = null;
 
+      // Call `callApi` method to make the actual PUT request for alarm status in zone
       return this.apiClient.callApi(
         '/user/{username}/zone/{zone_id}/alarm_status', 'PUT',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
