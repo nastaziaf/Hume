@@ -179,7 +179,10 @@
       var fs;
       try {
         fs = require('fs');
-      } catch (err) {}
+      } catch (err) {
+        // Handle the error
+        console.error('Error loading fs module:', err);
+      }
       if (fs && fs.ReadStream && param instanceof fs.ReadStream) {
         return true;
       }
