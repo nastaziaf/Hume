@@ -16,7 +16,7 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AddDeviceRequest', 'model/AddZoneRequest', 'model/AlarmResponse', 'model/CreateUserRequest', 'model/DeviceResponse', 'model/InvalidContact', 'model/InvalidDeviceId', 'model/InvalidInput', 'model/InvalidTemp', 'model/InvalidZoneId', 'model/SuccessfulDeviceGet', 'model/SuccessfulDeviceUpdate', 'model/TempResponse', 'model/UpdateDeviceRequest', 'model/UserResponse', 'model/ZoneResponse', 'api/AlarmApi', 'api/ContactDevsApi', 'api/DeviceApi', 'api/TemperatureApi', 'api/UserApi', 'api/ZoneApi'], factory);
+    define(['ApiClient', 'model', 'api'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('./ApiClient'), require('./model/AddDeviceRequest'), require('./model/AddZoneRequest'), require('./model/AlarmResponse'), require('./model/CreateUserRequest'), require('./model/DeviceResponse'), require('./model/InvalidContact'), require('./model/InvalidDeviceId'), require('./model/InvalidInput'), require('./model/InvalidTemp'), require('./model/InvalidZoneId'), require('./model/SuccessfulDeviceGet'), require('./model/SuccessfulDeviceUpdate'), require('./model/TempResponse'), require('./model/UpdateDeviceRequest'), require('./model/UserResponse'), require('./model/ZoneResponse'), require('./api/AlarmApi'), require('./api/ContactDevsApi'), require('./api/DeviceApi'), require('./api/TemperatureApi'), require('./api/UserApi'), require('./api/ZoneApi'));
