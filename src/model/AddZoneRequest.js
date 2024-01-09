@@ -62,13 +62,13 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('zone_id'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_id'))
         obj.zoneId = ApiClient.convertToType(data['zone_id'], 'Number');
-      if (data.hasOwnProperty('zone_name'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_name'))
         obj.zoneName = ApiClient.convertToType(data['zone_name'], 'String');
-      if (data.hasOwnProperty('zone_alarm'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_alarm'))
         obj.zoneAlarm = ApiClient.convertToType(data['zone_alarm'], 'Boolean');
-      if (data.hasOwnProperty('zone_temp'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_temp'))
         obj.zoneTemp = ApiClient.convertToType(data['zone_temp'], 'Number');
     }
     return obj;
