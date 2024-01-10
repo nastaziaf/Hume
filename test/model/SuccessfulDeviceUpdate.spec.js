@@ -15,72 +15,13 @@
 
 // Import the module loader utility function
 const configureModule = require('../moduleLoaderUtils');
+// Import the test utility
+const { generateInstanceTests } = require('../testUtils');
 
 // Use the module loader utility function to configure the module
-configureModule(function (expect, Hume) {
+configureModule(function () {
   'use strict';
 
-  // Variable to hold an instance of SuccessfulDeviceUpdate
-  var instance;
-
-  // Test suite for the SuccessfulDeviceUpdate
-  describe('(package)', function() {
-    describe('SuccessfulDeviceUpdate', function() {
-
-      // Setup a new instance before each test
-      beforeEach(function() {
-        instance = new Hume.SuccessfulDeviceUpdate();
-      });
-
-      // Test case to check if it creates an instance of SuccessfulDeviceUpdate
-      it('should create an instance of SuccessfulDeviceUpdate', function() {
-        // TODO: update the code to test SuccessfulDeviceUpdate
-        expect(instance).to.be.a(Hume.SuccessfulDeviceUpdate);
-      });
-
-      // Test case to check the 'name' property
-      it('should have the property name (base name: "name")', function() {
-        // TODO: update the code to test the property name
-        expect(instance).to.have.property('name');
-        // expect(instance.name).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'deviceType' property
-      it('should have the property deviceType (base name: "deviceType")', function() {
-        // TODO: update the code to test the property deviceType
-        expect(instance).to.have.property('deviceType');
-        // expect(instance.deviceType).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'brand' property
-      it('should have the property brand (base name: "brand")', function() {
-        // TODO: update the code to test the property brand
-        expect(instance).to.have.property('brand');
-        // expect(instance.brand).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'zone' property
-      it('should have the property zone (base name: "zone")', function() {
-        // TODO: update the code to test the property zone
-        expect(instance).to.have.property('zone');
-        // expect(instance.zone).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'status' property
-      it('should have the property status (base name: "status")', function() {
-        // TODO: update the code to test the property status
-        expect(instance).to.have.property('status');
-        // expect(instance.status).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'id' property
-      it('should have the property id (base name: "id")', function() {
-        // TODO: update the code to test the property id
-        expect(instance).to.have.property('id');
-        // expect(instance.id).to.be(expectedValueLiteral);
-      });
-
-    });
-  });
-
+  // Generate test cases for SuccessfulDeviceUpdate class
+  generateInstanceTests('SuccessfulDeviceUpdate', ['name', 'deviceType', 'brand', 'zone', 'status', 'id']);
 });
