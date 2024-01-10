@@ -1,8 +1,3 @@
-<!-- 
-  User
-  Comments: This is a markdown file with added comments about # Hume.InvalidZoneId.
--->
-
 # Hume.InvalidZoneId
 
 ## Properties

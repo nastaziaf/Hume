@@ -1,8 +1,3 @@
-<!-- 
-  User
-  Comments: This is a markdown file with added comments about # Hume.DeviceApi.
--->
-
 # Hume.DeviceApi
 
 All URIs are relative to *https://virtserver.swaggerhub.com/intziral/Hume/1.0.0*
