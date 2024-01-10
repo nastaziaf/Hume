@@ -1,3 +1,8 @@
+<!-- 
+  User
+  Comments: This is a markdown file with added comments about # Hume.ContactDevsApi.
+-->
+
 # Hume.ContactDevsApi
 
 All URIs are relative to *https://virtserver.swaggerhub.com/intziral/Hume/1.0.0*
