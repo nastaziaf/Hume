@@ -15,79 +15,14 @@
 
 // Import the module loader utility function
 const configureModule = require('../moduleLoaderUtils');
+// Import the test utility
+const { generateInstanceTests } = require('../testUtils');
 
 // Use the module loader utility function to configure the module
-configureModule(function (expect, Hume) {
+configureModule(function () {
   'use strict';
 
-  // Variable to hold an instance of CreateUserRequest
-  var instance;
-
-  // Test suite for the CreateUserRequest
-  describe('(package)', function() {
-    describe('CreateUserRequest', function() {
-
-      // Setup a new instance before each test
-      beforeEach(function() {
-        instance = new Hume.CreateUserRequest();
-      });
-
-      // Test case to check if it creates an instance of CreateUserRequest
-      it('should create an instance of CreateUserRequest', function() {
-        // TODO: update the code to test CreateUserRequest
-        expect(instance).to.be.a(Hume.CreateUserRequest);
-      });
-
-      // Test case to check the 'fullname' property
-      it('should have the property fullname (base name: "fullname")', function() {
-        // TODO: update the code to test the property fullname
-        expect(instance).to.have.property('fullname');
-        // expect(instance.fullname).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'email' property
-      it('should have the property email (base name: "email")', function() {
-        // TODO: update the code to test the property email
-        expect(instance).to.have.property('email');
-        // expect(instance.email).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'address' property
-      it('should have the property address (base name: "address")', function() {
-        // TODO: update the code to test the property address
-        expect(instance).to.have.property('address');
-        // expect(instance.address).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'phone' property
-      it('should have the property phone (base name: "phone")', function() {
-        // TODO: update the code to test the property phone
-        expect(instance).to.have.property('phone');
-        // expect(instance.phone).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'city' property
-      it('should have the property city (base name: "city")', function() {
-        // TODO: update the code to test the property city
-        expect(instance).to.have.property('city');
-        // expect(instance.city).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'username' property
-      it('should have the property username (base name: "username")', function() {
-        // TODO: update the code to test the property username
-        expect(instance).to.have.property('username');
-        // expect(instance.username).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'password' property
-      it('should have the property password (base name: "password")', function() {
-        // TODO: update the code to test the property password
-        expect(instance).to.have.property('password');
-        // expect(instance.password).to.be(expectedValueLiteral);
-      });
-
-    });
-  });
+  // Generate test cases for CreateUserRequest class
+  generateInstanceTests('CreateUserRequest', ['fullname', 'email', 'address', 'phone', 'city', 'username', 'password']);
 
 });
