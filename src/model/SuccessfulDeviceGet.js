@@ -13,21 +13,9 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.Hume) {
-      root.Hume = {};
-    }
-    root.Hume.SuccessfulDeviceGet = factory(root.Hume.ApiClient);
-  }
-}(this, function(ApiClient) {
+const commonModuleLoader = require('../commonModuleLoader');
+
+commonModuleLoader(this, function(ApiClient) {
   'use strict';
 
   /**
@@ -66,21 +54,21 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('name'))
+      if (Object.prototype.hasOwnProperty.call(data, 'name'))
         obj.name = ApiClient.convertToType(data['name'], 'String');
-      if (data.hasOwnProperty('deviceType'))
+      if (Object.prototype.hasOwnProperty.call(data, 'deviceType'))
         obj.deviceType = ApiClient.convertToType(data['deviceType'], 'String');
-      if (data.hasOwnProperty('brand'))
+      if (Object.prototype.hasOwnProperty.call(data, 'brand'))
         obj.brand = ApiClient.convertToType(data['brand'], 'String');
-      if (data.hasOwnProperty('zone'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone'))
         obj.zone = ApiClient.convertToType(data['zone'], 'String');
-      if (data.hasOwnProperty('status'))
+      if (Object.prototype.hasOwnProperty.call(data, 'status'))
         obj.status = ApiClient.convertToType(data['status'], 'String');
-      if (data.hasOwnProperty('id'))
+      if (Object.prototype.hasOwnProperty.call(data, 'id'))
         obj.id = ApiClient.convertToType(data['id'], 'Number');
     }
     return obj;
-  }
+  };
 
   /**
    * @member {String} name
@@ -112,7 +100,4 @@
    */
   exports.prototype.id = undefined;
 
-
-  return exports;
-
-}));
+}, 'SuccessfulDeviceGet', ['ApiClient']);

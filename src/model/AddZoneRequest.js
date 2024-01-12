@@ -13,21 +13,9 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.Hume) {
-      root.Hume = {};
-    }
-    root.Hume.AddZoneRequest = factory(root.Hume.ApiClient);
-  }
-}(this, function(ApiClient) {
+const commonModuleLoader = require('../commonModuleLoader');
+
+commonModuleLoader(this, function(ApiClient) {
   'use strict';
 
   /**
@@ -62,17 +50,17 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('zone_id'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_id'))
         obj.zoneId = ApiClient.convertToType(data['zone_id'], 'Number');
-      if (data.hasOwnProperty('zone_name'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_name'))
         obj.zoneName = ApiClient.convertToType(data['zone_name'], 'String');
-      if (data.hasOwnProperty('zone_alarm'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_alarm'))
         obj.zoneAlarm = ApiClient.convertToType(data['zone_alarm'], 'Boolean');
-      if (data.hasOwnProperty('zone_temp'))
+      if (Object.prototype.hasOwnProperty.call(data, 'zone_temp'))
         obj.zoneTemp = ApiClient.convertToType(data['zone_temp'], 'Number');
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Number} zoneId
@@ -94,7 +82,4 @@
    */
   exports.prototype.zoneTemp = undefined;
 
-
-  return exports;
-
-}));
+}, 'AddZoneRequest', ['ApiClient']);

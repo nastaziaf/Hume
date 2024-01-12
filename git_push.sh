@@ -3,20 +3,24 @@
 #
 # Usage example: /bin/sh ./git_push.sh wing328 swagger-petstore-perl "minor update"
 
+# Get user input
 git_user_id=$1
 git_repo_id=$2
 release_note=$3
 
+# Check if git_user_id is empty and provide information
 if [ "$git_user_id" = "" ]; then
     git_user_id=""
     echo "[INFO] No command line input provided. Set \$git_user_id to $git_user_id"
 fi
 
+# Check if git_repo_id is empty and provide information
 if [ "$git_repo_id" = "" ]; then
     git_repo_id=""
     echo "[INFO] No command line input provided. Set \$git_repo_id to $git_repo_id"
 fi
 
+# Check if release_note is empty and provide information
 if [ "$release_note" = "" ]; then
     release_note=""
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
@@ -35,6 +39,7 @@ git commit -m "$release_note"
 git_remote=`git remote`
 if [ "$git_remote" = "" ]; then # git remote not defined
 
+    # Check if GIT_TOKEN environment variable is not set
     if [ "$GIT_TOKEN" = "" ]; then
         echo "[INFO] \$GIT_TOKEN (environment variable) is not set. Using the Git credential in your environment."
         git remote add origin https://github.com/${git_user_id}/${git_repo_id}.git

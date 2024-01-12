@@ -13,21 +13,9 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.Hume) {
-      root.Hume = {};
-    }
-    root.Hume.TempResponse = factory(root.Hume.ApiClient);
-  }
-}(this, function(ApiClient) {
+const commonModuleLoader = require('../commonModuleLoader');
+
+commonModuleLoader(this, function(ApiClient) {
   'use strict';
 
   /**
@@ -56,18 +44,15 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('value'))
+      if (Object.prototype.hasOwnProperty.call(data, 'value'))
         obj.value = ApiClient.convertToType(data['value'], 'String');
     }
     return obj;
-  }
+  };
 
   /**
    * @member {String} value
    */
   exports.prototype.value = undefined;
 
-
-  return exports;
-
-}));
+}, 'TempResponse', ['ApiClient']);
