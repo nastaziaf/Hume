@@ -14,8 +14,8 @@
  */
 
 // Initialize constant variables
-var type_function = 'function';
-var type_object = 'object';
+let type_function = 'function';
+let type_object = 'object';
 
 (function(root, factory) {
   if (typeof define === type_function && define.amd) {
