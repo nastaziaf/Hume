@@ -21,7 +21,7 @@
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('./ApiClient'), require('./model/AddDeviceRequest'), require('./model/AddZoneRequest'), require('./model/AlarmResponse'), require('./model/CreateUserRequest'), require('./model/DeviceResponse'), require('./model/InvalidContact'), require('./model/InvalidDeviceId'), require('./model/InvalidInput'), require('./model/InvalidTemp'), require('./model/InvalidZoneId'), require('./model/SuccessfulDeviceGet'), require('./model/SuccessfulDeviceUpdate'), require('./model/TempResponse'), require('./model/UpdateDeviceRequest'), require('./model/UserResponse'), require('./model/ZoneResponse'), require('./api/AlarmApi'), require('./api/ContactDevsApi'), require('./api/DeviceApi'), require('./api/TemperatureApi'), require('./api/UserApi'), require('./api/ZoneApi'));
   }
-}(function(ApiClient, AddDeviceRequest, AddZoneRequest, AlarmResponse, CreateUserRequest, DeviceResponse, InvalidContact, InvalidDeviceId, InvalidInput, InvalidTemp, InvalidZoneId, SuccessfulDeviceGet, SuccessfulDeviceUpdate, TempResponse, UpdateDeviceRequest, UserResponse, ZoneResponse, AlarmApi, ContactDevsApi, DeviceApi, TemperatureApi, UserApi, ZoneApi) {
+}(function({ApiClient, AddDeviceRequest, AddZoneRequest, AlarmResponse, CreateUserRequest, DeviceResponse, InvalidContact, InvalidDeviceId, InvalidInput, InvalidTemp, InvalidZoneId, SuccessfulDeviceGet, SuccessfulDeviceUpdate, TempResponse, UpdateDeviceRequest, UserResponse, ZoneResponse, AlarmApi, ContactDevsApi, DeviceApi, TemperatureApi, UserApi, ZoneApi}) {
   'use strict';
 
   /**
