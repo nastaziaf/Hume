@@ -13,20 +13,11 @@
  *
  */
 
-// Immediately Invoked Function Expression (IIFE) to encapsulate code and prevent global scope pollution
-(function(root, factory) {
-  // Check for AMD (Asynchronous Module Definition) support
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['expect.js', '../../src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.js
-    factory(require('expect.js'), require('../../src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.Hume);
-  }
-}(this, function(expect, Hume) {
+// Import the module loader utility function
+const configureModule = require('../moduleLoaderUtils');
+
+// Use the module loader utility function to configure the module
+configureModule(function (expect, Hume) {
   'use strict';
 
   // Variable to hold an instance of the AddDeviceRequest
@@ -91,4 +82,4 @@
     });
   });
 
-}));
+});

@@ -444,13 +444,13 @@ var type_object = 'object';
       request.send(querystring.stringify(this.normalizeParams(formParams)));
     } else if (contentType == 'multipart/form-data') {
       var _formParams = this.normalizeParams(formParams);
-      for (var key in _formParams) {
-        if (Object.prototype.hasOwnProperty.call(_formParams, key)) {
-          if (this.isFileParam(_formParams[key])) {
+      for (var key_word in _formParams) {
+        if (Object.prototype.hasOwnProperty.call(_formParams, key_word)) {
+          if (this.isFileParam(_formParams[key_word])) {
             // file field
-            request.attach(key, _formParams[key]);
+            request.attach(key_word, _formParams[key_word]);
           } else {
-            request.field(key, _formParams[key]);
+            request.field(key_word, _formParams[key_word]);
           }
         }
       }
@@ -562,10 +562,10 @@ var type_object = 'object';
             }
           }
           var result = {};
-          for (var k in data) {
-            if (Object.prototype.hasOwnProperty.call(data, k)) {
-              var key = exports.convertToType(k, keyType);
-              var value = exports.convertToType(data[k], valueType);
+          for (var m in data) {
+            if (Object.prototype.hasOwnProperty.call(data, m)) {
+              var key = exports.convertToType(m, keyType);
+              var value = exports.convertToType(data[m], valueType);
               result[key] = value;
             }
           }
