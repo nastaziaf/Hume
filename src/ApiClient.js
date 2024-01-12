@@ -382,9 +382,12 @@ var type_object = 'object';
    * @param {module:ApiClient~callApiCallback} callback The callback function.
    * @returns {Object} The SuperAgent request object.
    */
-  exports.prototype.callApi = function callApi(path, httpMethod, pathParams,
-      queryParams, collectionQueryParams, headerParams, formParams, bodyParam, authNames, contentTypes, accepts,
-      returnType, callback) {
+  exports.prototype.callApi = function callApi(options, callback) {
+
+    const {
+      path, httpMethod, pathParams, queryParams, collectionQueryParams, headerParams,
+      formParams, bodyParam, authNames, contentTypes, accepts, returnType
+    } = options;
 
     var _this = this;
     var url = this.buildUrl(path, pathParams);
