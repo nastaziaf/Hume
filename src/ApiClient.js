@@ -133,7 +133,7 @@ var type_object = 'object';
     var _this = this;
     url = url.replace(/\{([\w-]+)\}/g, function(fullMatch, key) {
       var value;
-      if (pathParams.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(pathParams, key)) {
         value = _this.paramToString(pathParams[key]);
       } else {
         value = fullMatch;
@@ -219,7 +219,7 @@ var type_object = 'object';
   exports.prototype.normalizeParams = function(params) {
     var newParams = {};
     for (var key in params) {
-      if (params.hasOwnProperty(key) && params[key] != undefined && params[key] != null) {
+      if (Object.prototype.hasOwnProperty.call(params, key) && params[key] != undefined && params[key] != null) {
         var value = params[key];
         if (this.isFileParam(value) || Array.isArray(value)) {
           newParams[key] = value;
@@ -395,7 +395,7 @@ var type_object = 'object';
 
     // set collection query parameters
     for (var key in collectionQueryParams) {
-      if (collectionQueryParams.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(collectionQueryParams, key)) {
         var param = collectionQueryParams[key];
         if (param.collectionFormat === 'csv') {
           // SuperAgent normally percent-encodes all reserved characters in a query parameter. However,
@@ -444,13 +444,13 @@ var type_object = 'object';
       request.send(querystring.stringify(this.normalizeParams(formParams)));
     } else if (contentType == 'multipart/form-data') {
       var _formParams = this.normalizeParams(formParams);
-      for (var key in _formParams) {
-        if (_formParams.hasOwnProperty(key)) {
-          if (this.isFileParam(_formParams[key])) {
+      for (var key_word in _formParams) {
+        if (Object.prototype.hasOwnProperty.call(_formParams, key_word)) {
+          if (this.isFileParam(_formParams[key_word])) {
             // file field
-            request.attach(key, _formParams[key]);
+            request.attach(key_word, _formParams[key_word]);
           } else {
-            request.field(key, _formParams[key]);
+            request.field(key_word, _formParams[key_word]);
           }
         }
       }
@@ -555,17 +555,17 @@ var type_object = 'object';
           // for plain object type like: {'String': 'Integer'}
           var keyType, valueType;
           for (var k in type) {
-            if (type.hasOwnProperty(k)) {
+            if (Object.prototype.hasOwnProperty.call(type, k)) {
               keyType = k;
               valueType = type[k];
               break;
             }
           }
           var result = {};
-          for (var k in data) {
-            if (data.hasOwnProperty(k)) {
-              var key = exports.convertToType(k, keyType);
-              var value = exports.convertToType(data[k], valueType);
+          for (var m in data) {
+            if (Object.prototype.hasOwnProperty.call(data, m)) {
+              var key = exports.convertToType(m, keyType);
+              var value = exports.convertToType(data[m], valueType);
               result[key] = value;
             }
           }
@@ -585,12 +585,12 @@ var type_object = 'object';
   exports.constructFromObject = function(data, obj, itemType) {
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
-        if (data.hasOwnProperty(i))
+        if (Object.prototype.hasOwnProperty.call(data, i))
           obj[i] = exports.convertToType(data[i], itemType);
       }
     } else {
       for (var k in data) {
-        if (data.hasOwnProperty(k))
+        if (Object.prototype.hasOwnProperty.call(data, k))
           obj[k] = exports.convertToType(data[k], itemType);
       }
     }

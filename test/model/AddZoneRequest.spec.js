@@ -13,68 +13,16 @@
  *
  */
 
-// Immediately Invoked Function Expression (IIFE) to encapsulate code and prevent global scope pollution
-(function(root, factory) {
-  // Check for AMD (Asynchronous Module Definition) support
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['expect.js', '../../src/index'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.js
-    factory(require('expect.js'), require('../../src/index'));
-  } else {
-    // Browser globals (root is window)
-    factory(root.expect, root.Hume);
-  }
-}(this, function(expect, Hume) {
+// Import the module loader utility function
+const configureModule = require('../moduleLoaderUtils');
+// Import the test utility
+const { generateInstanceTests } = require('../testUtils');
+
+// Use the module loader utility function to configure the module
+configureModule(function () {
   'use strict';
 
-  // Variable to hold an instance of the AddZoneRequest
-  var instance;
+  // Generate test cases for AddZoneRequest class
+  generateInstanceTests('AddZoneRequest', ['zoneId', 'zoneName', 'zoneAlarm', 'zoneTemp']);
 
-  // Test suite for the AddZoneRequest
-  describe('(package)', function() {
-    describe('AddZoneRequest', function() {
-
-      // Setup a new instance before each test
-      beforeEach(function() {
-        instance = new Hume.AddZoneRequest();
-      });
-
-      // Test case to check if it creates an instance of AddZoneRequest
-      it('should create an instance of AddZoneRequest', function() {
-        // TODO: update the code to test AddZoneRequest
-        expect(instance).to.be.a(Hume.AddZoneRequest);
-      });
-
-      // Test case to check the 'zoneId' property
-      it('should have the property zoneId (base name: "zone_id")', function() {
-        // TODO: update the code to test the property zoneId
-        expect(instance).to.have.property('zoneId');
-        // expect(instance.zoneId).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'zoneName' property
-      it('should have the property zoneName (base name: "zone_name")', function() {
-        // TODO: update the code to test the property zoneName
-        expect(instance).to.have.property('zoneName');
-        // expect(instance.zoneName).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'zoneAlarm' property
-      it('should have the property zoneAlarm (base name: "zone_alarm")', function() {
-        // TODO: update the code to test the property zoneAlarm
-        expect(instance).to.have.property('zoneAlarm');
-        // expect(instance.zoneAlarm).to.be(expectedValueLiteral);
-      });
-
-      // Test case to check the 'zoneTemp' property
-      it('should have the property zoneTemp (base name: "zone_temp")', function() {
-        // TODO: update the code to test the property zoneTemp
-        expect(instance).to.have.property('zoneTemp');
-        // expect(instance.zoneTemp).to.be(expectedValueLiteral);
-      });
-    });
-  });
-
-}));
+});

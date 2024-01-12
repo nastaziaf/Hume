@@ -13,21 +13,9 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.Hume) {
-      root.Hume = {};
-    }
-    root.Hume.CreateUserRequest = factory(root.Hume.ApiClient);
-  }
-}(this, function(ApiClient) {
+const commonModuleLoader = require('../commonModuleLoader');
+
+commonModuleLoader(this, function(ApiClient) {
   'use strict';
 
   /**
@@ -68,23 +56,23 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('fullname'))
+      if (Object.prototype.hasOwnProperty.call(data, 'fullname'))
         obj.fullname = ApiClient.convertToType(data['fullname'], 'String');
-      if (data.hasOwnProperty('email'))
+      if (Object.prototype.hasOwnProperty.call(data, 'email'))
         obj.email = ApiClient.convertToType(data['email'], 'String');
-      if (data.hasOwnProperty('address'))
+      if (Object.prototype.hasOwnProperty.call(data, 'address'))
         obj.address = ApiClient.convertToType(data['address'], 'String');
-      if (data.hasOwnProperty('phone'))
+      if (Object.prototype.hasOwnProperty.call(data, 'phone'))
         obj.phone = ApiClient.convertToType(data['phone'], 'String');
-      if (data.hasOwnProperty('city'))
+      if (Object.prototype.hasOwnProperty.call(data, 'city'))
         obj.city = ApiClient.convertToType(data['city'], 'String');
-      if (data.hasOwnProperty('username'))
+      if (Object.prototype.hasOwnProperty.call(data, 'username'))
         obj.username = ApiClient.convertToType(data['username'], 'String');
-      if (data.hasOwnProperty('password'))
+      if (Object.prototype.hasOwnProperty.call(data, 'password'))
         obj.password = ApiClient.convertToType(data['password'], 'String');
     }
     return obj;
-  }
+  };
 
   /**
    * @member {String} fullname
@@ -121,7 +109,4 @@
    */
   exports.prototype.password = undefined;
 
-
-  return exports;
-
-}));
+}, 'CreateUserRequest', ['ApiClient']);

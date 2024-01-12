@@ -13,21 +13,9 @@
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.Hume) {
-      root.Hume = {};
-    }
-    root.Hume.InvalidZoneId = factory(root.Hume.ApiClient);
-  }
-}(this, function(ApiClient) {
+const commonModuleLoader = require('../commonModuleLoader');
+
+commonModuleLoader(this, function(ApiClient) {
   'use strict';
 
   /**
@@ -58,13 +46,13 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('code'))
+      if (Object.prototype.hasOwnProperty.call(data, 'code'))
         obj.code = ApiClient.convertToType(data['code'], 'Number');
-      if (data.hasOwnProperty('message'))
+      if (Object.prototype.hasOwnProperty.call(data, 'message'))
         obj.message = ApiClient.convertToType(data['message'], 'Number');
     }
     return obj;
-  }
+  };
 
   /**
    * @member {Number} code
@@ -76,7 +64,4 @@
    */
   exports.prototype.message = undefined;
 
-
-  return exports;
-
-}));
+}, 'InvalidZoneId', ['ApiClient']);
